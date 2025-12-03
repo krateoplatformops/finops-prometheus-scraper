@@ -1,0 +1,5 @@
+bin
+.vscode
+temp
+config.yaml
+deploy.yaml
