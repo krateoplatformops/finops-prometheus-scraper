@@ -23,7 +23,7 @@ jobs:
 
       - name: Extract version
         run: |
-          VERSION=${GITHUB_REF#refs/tags/${{ env.MODULE }}/}
+          VERSION=${GITHUB_REF#refs/tags/}
           echo "VERSION=$VERSION" >> $GITHUB_ENV
           echo "LATEST_TAG=latest" >> $GITHUB_ENV
 
@@ -31,7 +31,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.GHCR_REPO }}/${{ env.MODULE }}
+          images: ${{ env.GHCR_REPO }}/ }}
           tags: |
             type=raw,value=${{ env.VERSION }}
             type=raw,value=${{ env.LATEST_TAG }}
