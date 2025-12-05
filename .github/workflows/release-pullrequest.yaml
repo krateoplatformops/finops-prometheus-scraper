@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-#  MODULE: finops-prometheus-scraper
+  MODULE: finops-prometheus-scraper
   GHCR_REPO: ghcr.io/${{ github.repository }}
 
 jobs:

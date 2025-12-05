@@ -6,7 +6,7 @@ on:
     tags: [ '[0-9]+.[0-9]+.[0-9]+' ]
 
 env:
-#  MODULE: finops-prometheus-scraper
+  MODULE: finops-prometheus-scraper
   GHCR_REPO: ghcr.io/${{ github.repository }}
 
 jobs:
@@ -31,7 +31,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.GHCR_REPO }}/ }}
+          images: ${{ env.GHCR_REPO }}/${{ env.MODULE }}
           tags: |
             type=raw,value=${{ env.VERSION }}
             type=raw,value=${{ env.LATEST_TAG }}
