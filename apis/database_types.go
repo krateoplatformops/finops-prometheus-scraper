@@ -21,10 +21,11 @@ type DatabaseConfig struct {
 }
 
 type Exporter struct {
-	API             finopsdatatypes.API `yaml:"api"`
-	PollingInterval metav1.Duration     `yaml:"pollingInterval"`
-	TableName       string              `yaml:"tableName"`
-	MetricType      string              `yaml:"metricType"`
+	API             finopsdatatypes.API      `yaml:"api"`
+	PollingInterval metav1.Duration          `yaml:"pollingInterval"`
+	TableName       string                   `yaml:"tableName"`
+	MetricType      string                   `yaml:"metricType"`
+	Generic         *finopsdatatypes.Generic `yaml:"generic"`
 }
 
 type MetricRecord struct {

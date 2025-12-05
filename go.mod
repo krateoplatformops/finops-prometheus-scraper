@@ -45,7 +45,7 @@ require (
 )
 
 require (
-	github.com/krateoplatformops/finops-data-types v0.0.0-20250307112147-b1c646657cff
+	github.com/krateoplatformops/finops-data-types v0.0.0-20251204131807-da92e19b99ff
 	github.com/krateoplatformops/plumbing v0.9.4
 	github.com/prometheus/common v0.55.0
 	github.com/rs/zerolog v1.33.0
