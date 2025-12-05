@@ -28,7 +28,18 @@ func UploadMetrics(metrics []apis.MetricRecord, uploadServiceURL string, config 
 		}
 
 		// Create request
-		url := fmt.Sprintf("%s/upload?table=%s&type=%s", strings.Trim(uploadServiceURL, "/"), config.Exporter.TableName, config.Exporter.MetricType)
+		url := ""
+		if strings.ToLower(config.Exporter.MetricType) != "generic" {
+			url = fmt.Sprintf("%s/upload?table=%s&type=%s", strings.Trim(uploadServiceURL, "/"), config.Exporter.TableName, config.Exporter.MetricType)
+		} else if strings.ToLower(config.Exporter.MetricType) == "generic" {
+			if config.Exporter.Generic != nil {
+				url = fmt.Sprintf("%s/upload?table=%s&type=%s&value=%d", strings.Trim(uploadServiceURL, "/"), config.Exporter.TableName, config.Exporter.MetricType, config.Exporter.Generic.ValueColumnIndex)
+			} else {
+				return fmt.Errorf("generic object cannot be empty with metric type generic")
+			}
+
+		}
+
 		req, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
 		if err != nil {
 			return fmt.Errorf("error creating request: %v", err)
