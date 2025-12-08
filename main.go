@@ -155,6 +155,13 @@ func main() {
 		timestamp := time.Now().Unix()
 
 		for _, value := range mf {
+			if config.Exporter.Generic != nil {
+				if config.Exporter.Generic.MetricName != "" {
+					if *value.Name != config.Exporter.Generic.MetricName {
+						continue
+					}
+				}
+			}
 			for _, metric := range value.Metric {
 				record := apis.MetricRecord{
 					Labels:    make(map[string]string),
