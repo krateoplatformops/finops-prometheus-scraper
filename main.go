@@ -155,7 +155,7 @@ func main() {
 		timestamp := time.Now().Unix()
 
 		for _, value := range mf {
-			if config.Exporter.Generic != nil {
+			if config.Exporter.Generic != nil && config.Exporter.MetricType == "generic" {
 				if config.Exporter.Generic.MetricName != "" {
 					if *value.Name != config.Exporter.Generic.MetricName {
 						continue
